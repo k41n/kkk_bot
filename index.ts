@@ -43,8 +43,6 @@ const main = async () => {
   });
 
   bot.on("message_reaction", async (msg) => {
-    if (msg.chat.id !== -4651840946) return
-
     console.log('MSG:', msg)
     const messageId = msg.message_id;
     const newReactions = msg.new_reaction;
