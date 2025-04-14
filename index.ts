@@ -43,6 +43,8 @@ const main = async () => {
   });
 
   bot.on("message_reaction", async (msg) => {
+    if (msg.chat.id !== -4651840946) return
+
     console.log('MSG:', msg)
     const messageId = msg.message_id;
     const newReactions = msg.new_reaction;
@@ -55,6 +57,7 @@ const main = async () => {
         if (result <= -3) {
           console.log('Removing message', messageId)
           await bot.deleteMessage(msg.chat.id, messageId)
+          await bot.sendMessage(msg.chat.id, `Баяны постишь, @${msg.user.username}, удалил я твоё сообщение`)
         }
       } else {
         handlePositiveReaction(messageId);
