@@ -109,6 +109,7 @@ export class BotStore {
 
   public async handleReaction(msg: ReactionMessage) {
     try {
+      await this.#addUser.run(Number(msg.user?.id), msg.user.username)
       await this.#clearUserReactionsOnMessage.run(
         Number(msg.user?.id),
         Number(msg.message_id)
